@@ -14,9 +14,9 @@ jobs:
     name: Sorbet
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - uses: ruby/setup-ruby@d5fb7a202fc07872cb44f00ba8e6197b70cb0c55 # v1.179.0
+      - uses: ruby/setup-ruby@a6e6f86333f0a2523ece813039b8b4be04560854 # v1.190.0
         with:
           bundler-cache: true
 
@@ -34,7 +34,7 @@ jobs:
       - run: bundle exec spoom srb coverage snapshot --save
 
       - if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        uses: actions/upload-artifact@89ef406dd8d7e03cfd12d9e0a4a378f454709029 # v4.3.5
         with:
           name: spoom_data
           path: ./spoom_data/
@@ -45,7 +45,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        uses: actions/upload-artifact@89ef406dd8d7e03cfd12d9e0a4a378f454709029 # v4.3.5
         with:
           name: spoom_report
           path: ./spoom_report.html
